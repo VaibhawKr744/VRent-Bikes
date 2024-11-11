@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Calendar as CalendarIcon, ChevronRight } from 'lucide-react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Image from 'next/image';
 
 const LandingPage = () => {
   const [startDate, setStartDate] = useState(null);
@@ -11,11 +12,8 @@ const LandingPage = () => {
       {/* Hero Section */}
       <div className="relative min-h-[85vh] bg-gradient-to-r from-black to-gray-900">
         <div className="absolute inset-0">
-          <img
-            src="/api/placeholder/1920/1080"
-            alt="Hero Background"
-            className="w-full h-full object-cover opacity-30"
-          />
+        {/* <Image src="/path/to/image.jpg" alt="description" width={500} height={300} /> */}
+
         </div>
         <div className="relative container mx-auto px-4 pt-28">
           <div className="max-w-3xl mx-auto text-center text-white mb-12">
@@ -157,16 +155,16 @@ const LandingPage = () => {
           <h2 className="text-4xl font-bold mb-8">What Our Customers Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="testimonial-card">
-              <p className="text-gray-300">"Amazing service! So easy to use and very reliable!"</p>
-              <p className="font-semibold text-yellow-400">John Doe</p>
+            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+            <p className="font-semibold text-yellow-400">John Doe</p>
             </div>
             <div className="testimonial-card">
-              <p className="text-gray-300">"Great experience, the bike was in perfect condition."</p>
-              <p className="font-semibold text-yellow-400">Jane Smith</p>
+            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+            <p className="font-semibold text-yellow-400">Jane Smith</p>
             </div>
             <div className="testimonial-card">
-              <p className="text-gray-300">"Affordable prices and flexible plans, highly recommend!"</p>
-              <p className="font-semibold text-yellow-400">Mark Williams</p>
+            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+            <p className="font-semibold text-yellow-400">Mark Williams</p>
             </div>
           </div>
         </div>
