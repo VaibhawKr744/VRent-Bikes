@@ -12,11 +12,11 @@ const LandingPage = () => {
       {/* Hero Section */}
       <div className="relative min-h-[85vh] bg-gradient-to-r from-black to-gray-900">
         <div className="absolute inset-0">
-        {/* <Image src="/path/to/image.jpg" alt="description" width={500} height={300} /> */}
-
+          <Image src="/bikes.jpg" alt="description" layout="fill" objectFit="cover" />
         </div>
+
         <div className="relative container mx-auto px-4 pt-28">
-          <div className="max-w-3xl mx-auto text-center text-white mb-12">
+          <div className="max-w-3xl mx-auto text-center text-white mb-12 bg-black/60 p-8 rounded-lg">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Rent Bikes for Your
               <span className="text-yellow-400"> Next Adventure</span>
@@ -155,16 +155,16 @@ const LandingPage = () => {
           <h2 className="text-4xl font-bold mb-8">What Our Customers Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="testimonial-card">
-            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
-            <p className="font-semibold text-yellow-400">John Doe</p>
+              <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+              <p className="font-semibold text-yellow-400">John Doe</p>
             </div>
             <div className="testimonial-card">
-            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
-            <p className="font-semibold text-yellow-400">Jane Smith</p>
+              <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+              <p className="font-semibold text-yellow-400">Jane Smith</p>
             </div>
             <div className="testimonial-card">
-            <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
-            <p className="font-semibold text-yellow-400">Mark Williams</p>
+              <p className="text-gray-300">&quot;Amazing service! So easy to use and very reliable!&quot;</p>
+              <p className="font-semibold text-yellow-400">Mark Williams</p>
             </div>
           </div>
         </div>
