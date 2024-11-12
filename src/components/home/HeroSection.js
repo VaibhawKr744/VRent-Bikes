@@ -12,7 +12,13 @@ const LandingPage = () => {
       {/* Hero Section */}
       <div className="relative min-h-[85vh] bg-gradient-to-r from-black to-gray-900">
         <div className="absolute inset-0">
-          <Image src="/bikes.jpg" alt="description" layout="fill" objectFit="cover" />
+          <Image
+            src="/bikes.jpg"
+            alt="description"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center top" // Adjusts image position for mobile responsiveness
+          />
         </div>
 
         <div className="relative container mx-auto px-4 pt-28">
