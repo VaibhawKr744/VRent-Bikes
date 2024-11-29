@@ -337,7 +337,7 @@ const LandingPage = () => {
              <div className="absolute -right-2 -bottom-2 w-full h-full border-2 border-[#F9E356] rounded-lg"></div>
              
              {/* Quote mark */}
-             <div className="absolute -left-4 -top-4 text-[#F9E356] text-8xl font-serif leading-none">"</div>
+             <div className="absolute -left-4 -top-4 text-[#F9E356] text-8xl font-serif leading-none">&ldquo;</div>
              
              {/* Content */}
              <div className="relative">
@@ -351,7 +351,7 @@ const LandingPage = () => {
              </div>
 
              {/* Closing quote */}
-             <div className="absolute -right-4 -bottom-4 text-[#F9E356] text-8xl font-serif leading-none rotate-180">"</div>
+             <div className="absolute -right-4 -bottom-4 text-[#F9E356] text-8xl font-serif leading-none rotate-180">&ldquo;</div>
            </div>
          </div>
        ))}
