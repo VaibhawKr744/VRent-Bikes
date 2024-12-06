@@ -1,29 +1,47 @@
-import React from 'react';
+// pages/bikes/index.js
+import { useEffect, useState } from 'react';
+import { useBikes } from '@/hooks/useBikes';
+import { toast } from 'react-hot-toast';
 import Image from 'next/image';
 
 const Bikes = () => {
-    // Static data for now
-    const bikes = [
-        {
-            id: 1,
-            name: 'Royal Enfield Classic 350',
-            model: '2023',
-            imageUrl: '/bikes/bike1.jpg', // You'll need to add images in public/bikes folder
-            pricePerHour: 200,
-            pricePerDay: 1000,
-            category: 'Cruiser'
-        },
-        {
-            id: 2,
-            name: 'KTM Duke 250',
-            model: '2023',
-            imageUrl: '/bikes/bike2.jpg',
-            pricePerHour: 300,
-            pricePerDay: 1500,
-            category: 'Sports'
-        },
-        // Add more bikes as needed
-    ];
+    const { bikes, loading, error, getAllBikes, getFilteredBikes } = useBikes();
+    const [filters, setFilters] = useState({
+        category: '',
+        priceRange: '',
+        sortBy: ''
+    });
+
+    useEffect(() => {
+        fetchBikes();
+    }, []);
+
+    const fetchBikes = async () => {
+        try {
+            await getAllBikes();
+        } catch (error) {
+            console.error('Error fetching bikes:', error);
+        }
+    };
+
+    const handleFilterChange = (e) => {
+        const { name, value } = e.target;
+        setFilters(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const applyFilters = async () => {
+        try {
+            await getFilteredBikes(filters);
+        } catch (error) {
+            console.error('Error applying filters:', error);
+        }
+    };
+
+    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">{error}</div>;
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -39,25 +57,22 @@ const Bikes = () => {
             <div className="container mx-auto px-4 py-8">
                 <div className="bg-white rounded-lg shadow-md p-4 mb-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <select className="p-2 border rounded-md text-black">
+                        <select 
+                            name="category"
+                            value={filters.category}
+                            onChange={handleFilterChange}
+                            className="p-2 border rounded-md text-black"
+                        >
                             <option value="">All Categories</option>
                             <option value="sports">Sports</option>
                             <option value="cruiser">Cruiser</option>
                             <option value="adventure">Adventure</option>
                         </select>
-                        <select className="p-2 border rounded-md text-black">
-                            <option value="">Price Range</option>
-                            <option value="0-500">₹0 - ₹500</option>
-                            <option value="501-1000">₹501 - ₹1000</option>
-                            <option value="1001+">₹1001+</option>
-                        </select>
-                        <select className="p-2 border rounded-md text-black">
-                            <option value="">Sort By</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                            <option value="name">Name</option>
-                        </select>
-                        <button className="bg-[#F9E356] text-black py-2 px-4 rounded-md hover:bg-[#F9E356]/90 transition-colors font-medium">
+                        {/* Other filters */}
+                        <button 
+                            onClick={applyFilters}
+                            className="bg-[#F9E356] text-black py-2 px-4 rounded-md hover:bg-[#F9E356]/90 transition-colors font-medium"
+                        >
                             Apply Filters
                         </button>
                     </div>
@@ -69,7 +84,7 @@ const Bikes = () => {
                         <div key={bike.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <div className="relative h-48">
                                 <Image
-                                    src={bike.imageUrl}
+                                    src= '/bikes/bike1.jpg'
                                     alt={bike.name}
                                     layout="fill"
                                     objectFit="cover"
