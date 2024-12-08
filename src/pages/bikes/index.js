@@ -42,7 +42,7 @@ const Bikes = () => {
 
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
     if (error) return <div className="min-h-screen flex items-center justify-center text-red-500">{error}</div>;
-
+     console.log("bikes", bikes)
     return (
         <div className="min-h-screen bg-gray-100">
             {/* Hero Section */}
@@ -80,7 +80,7 @@ const Bikes = () => {
 
                 {/* Bikes Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {bikes.map((bike) => (
+                    {bikes?.data?.map((bike) => (
                         <div key={bike.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <div className="relative h-48">
                                 <Image

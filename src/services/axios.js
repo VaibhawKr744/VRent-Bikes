@@ -1,7 +1,8 @@
-// src/services/axios.js
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
-const baseURL = '/api/proxy'; 
+const baseURL = '/api/proxy';
+
 export const axiosInstance = axios.create({
   baseURL,
   headers: {
@@ -9,16 +10,16 @@ export const axiosInstance = axios.create({
   },
 });
 
-// Add token if needed for user authentication
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
+axiosInstance.interceptors.response.use(
+  (response) => response,
   (error) => {
+    if (error.response?.status === 401) {
+      // Clear auth data if token expires
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/';
+      toast.error('Session expired. Please login again.');
+    }
     return Promise.reject(error);
   }
 );
